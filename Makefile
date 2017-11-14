@@ -32,7 +32,7 @@ LFLAGS=-lstdc++ \
 	   -lpthread -lxcb -lXau -lXdmcp \
 	   -lSOIL \
 	   -lOpenCOLLADAFramework -lOpenCOLLADABaseUtils -lOpenCOLLADAStreamWriter -lOpenCOLLADASaxFrameworkLoader \
-	   -lGeneratedSaxParser -lMathMLSolver -lOpenCOLLADABaseUtils -lpcre -lxml2 -lLLVM-3.8
+	   -lGeneratedSaxParser -lMathMLSolver -lOpenCOLLADABaseUtils -lpcre -lxml2 -lLLVM
 
 CC=g++
 

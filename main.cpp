@@ -139,9 +139,10 @@ bool compilerShader(GLuint &shader, GLenum type, string const &fichierSource)
 
 int main(int argc, char **argv) {
 
-	if (!glfwInit()) {
+    int err = glfwInit();
+	if (!err) {
 
-		std::cout << "Failed to initialize GLFW\n";
+		std::cout << "Failed to initialize GLFW: " << err << "\n";
 		exit(EXIT_FAILURE);
 
 	}
@@ -153,6 +154,7 @@ int main(int argc, char **argv) {
 
     int height = mode->height;
     int width = mode->width;
+    std::cout << "Screen resolution: " << width << "x" << height << std::endl;
 
     GLFWwindow* window = glfwCreateWindow(width, height, "Test Mandelbrot", NULL, NULL);
 	if (!window)
@@ -338,25 +340,25 @@ int main(int argc, char **argv) {
 
     });
 
-    controller->bind(GLFW_KEY_Q, [&scale]() {
+    controller->bind(GLFW_KEY_J, [&scale]() {
 
         scale *= 1.01;
 
     });
 
-    controller->bind(GLFW_KEY_E, [&scale]() {
+    controller->bind(GLFW_KEY_U, [&scale]() {
 
         scale *= 0.99;
 
     });
 
-    controller->bind(GLFW_KEY_R, [&iter]() {
+    controller->bind(GLFW_KEY_I, [&iter]() {
 
         iter++;
 
     });
 
-    controller->bind(GLFW_KEY_F, [&iter]() {
+    controller->bind(GLFW_KEY_K, [&iter]() {
 
         iter--;
 
