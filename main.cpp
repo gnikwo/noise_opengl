@@ -10,14 +10,13 @@
 #include <GL/glew.h>
 
 #include <GLFW/glfw3.h>
-#include <GLFW/glfw3native.h>
 
 #include <SOIL.h>
 
 // Includes GLM
 #include <glm/glm.hpp>
-#include <glm/gtx/transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+
 
 #ifndef BUFFER_OFFSET
 
@@ -174,7 +173,7 @@ int main(int argc, char **argv) {
 	//=====================
 
 	glfwWindowHint(GLFW_SAMPLES, 4); // 4x antialiasing
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 1); //OpenGL 1.2
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 1); //OpenGL 1.2
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
 	//glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
 
