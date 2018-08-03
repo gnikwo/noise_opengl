@@ -1,7 +1,7 @@
 EXEC=test
 
 SOURCES=main.cpp Controller.cpp
-RESSOURCES=pal.png shader.vert shader.frag
+RESSOURCES=shader.vert shader.frag
 
 OUT_DIR=bin
 OBJ_DIR=obj

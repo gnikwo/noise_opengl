@@ -155,7 +155,7 @@ int main(int argc, char **argv) {
     int width = mode->width;
     std::cout << "Screen resolution: " << width << "x" << height << std::endl;
 
-    GLFWwindow* window = glfwCreateWindow(width, height, "Test Mandelbrot", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(width, height, "Noise", NULL, NULL);
 	if (!window)
 	{
 
@@ -290,76 +290,11 @@ int main(int argc, char **argv) {
 
 	glBindVertexArray(0);
 
-    //====Texture====
-
-
-    GLuint gradientMap = SOIL_load_OGL_texture
-    (
-        "pal.png",
-        SOIL_LOAD_AUTO,
-        SOIL_CREATE_NEW_ID,
-        SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
-    );
-
-    //====================================
-
-    vec2 center = vec2(0);
-    float scale = 1.0;
-    int iter = 10;
-
     Controller* controller = new Controller(); // a Controller to bind the ESCAPE key to the Window
 
     controller->bind(GLFW_KEY_ESCAPE, [&window]() {
 
         glfwSetWindowShouldClose(window, true);
-
-    });
-
-    controller->bind(GLFW_KEY_D, [&center, &scale]() {
-
-        center.x -= 0.01 * scale;
-
-    });
-
-    controller->bind(GLFW_KEY_A, [&center, &scale]() {
-
-        center.x += 0.01 * scale;
-
-    });
-
-    controller->bind(GLFW_KEY_W, [&center, &scale]() {
-
-        center.y -= 0.01 * scale;
-
-    });
-
-    controller->bind(GLFW_KEY_S, [&center, &scale]() {
-
-        center.y += 0.01 * scale;
-
-    });
-
-    controller->bind(GLFW_KEY_J, [&scale]() {
-
-        scale *= 1.01;
-
-    });
-
-    controller->bind(GLFW_KEY_U, [&scale]() {
-
-        scale *= 0.99;
-
-    });
-
-    controller->bind(GLFW_KEY_I, [&iter]() {
-
-        iter++;
-
-    });
-
-    controller->bind(GLFW_KEY_K, [&iter]() {
-
-        iter--;
 
     });
 
@@ -388,14 +323,7 @@ int main(int argc, char **argv) {
 
             glBindVertexArray(idVAO);
 
-	            envoyer1I("gradient", programID, 0);
-
-                envoyer1I("iter", programID, iter);
-                envoyerFloat("scale", programID, scale);
-	            envoyerVec2("center", programID, center);
-
-                glActiveTexture(GL_TEXTURE0);
-                glBindTexture(GL_TEXTURE_2D, gradientMap);
+	        envoyer1I("time", programID, startTime);
 
                 glDrawArrays(GL_TRIANGLES, 0, 6);
 

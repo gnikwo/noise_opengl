@@ -1,35 +1,17 @@
 #version 120
 
-uniform sampler2D gradient;
-
-uniform vec2 center;
-uniform float scale;
-uniform int iter;
+uniform int time;
 
 varying vec2 pos;
+
+float rand(vec2 n)
+{
+    return 0.5 + 0.5 * fract(sin(dot(n.xy, vec2(12.9898, 78.233)))* 43758.5453);
+}
 
 void main()
 {
 
-    vec2 z, c;
-
-    c.x = (pos.x)*scale - center.x;
-    c.y = (pos.y)*scale - center.y;
-
-    int i;
-    z = c;
-    for(i=0; i<iter; i++) {
-        float x = (z.x * z.x - z.y * z.y) + c.x;
-        float y = (z.y * z.x + z.x * z.y) + c.y;
-
-        if((x * x + y * y) > 4.0)
-            break;
-
-        z.x = x;
-        z.y = y;
-
-    }
-
-gl_FragColor = texture2D(gradient, vec2(i == iter ? 0.0 : float(i), 0) / 100.0);
+    gl_FragColor = vec4(rand(pos.xx * pos.y * time), rand(pos.yy * pos.x * time), rand(pos.xy * time), 1.0);
 
 }
