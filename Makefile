@@ -15,23 +15,19 @@ ifeq ($(OS),Windows_NT)
 		 -I $(MINGW_PATH)/include \
 		 -I $(MINGW_PATH)/glew/include \
 		 -I $(MINGW_PATH)/glfw/include \
-                 -I $(MINGW_PATH)/SOIL/src \
 		 -I $(MINGW_PATH)/glm
 	
 	LDIR=-L $(MINGW_PATH)/lib \
 		 -L $(MINGW_PATH)/glew/lib/Release/x64 \
-		 -L $(MINGW_PATH)/glfw/lib-mingw-w64 \
-		 -L $(MINGW_PATH)/SOIL/lib
+		 -L $(MINGW_PATH)/glfw/lib-mingw-w64
 		 
 	CFLAGS=-Wall -Wextra -O3 -g3 -std=c++11 -Wno-unused-variable -Wno-unused-parameter
 	LFLAGS=-lstdc++ \
-	           -lSOIL \
 		   -lglfw3 -lopengl32 -lglu32 -lgdi32 -lglew32
 else
 
 	IDIR=-I include \
-		 -I /usr/include \
-		 -I /usr/include/SOIL
+		 -I /usr/include
 	
 	LDIR=-L /usr/lib \
 		 -L /usr/local/lib \
@@ -44,7 +40,6 @@ else
 		   -lXdamage -lX11-xcb -lxcb-glx -lxcb-dri2 -lXxf86vm \
 		   -lglfw -lrt -lm -ldl -lXrandr -lXinerama -lXext -lXcursor -lXrender -lXfixes -lX11 \
 		   -lpthread -lxcb -lXau -lXdmcp \
-		   -lSOIL \
 		   -lpcre -lxml2 -lLLVM
 endif
 

@@ -11,8 +11,6 @@
 
 #include <GLFW/glfw3.h>
 
-#include <SOIL.h>
-
 // Includes GLM
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
